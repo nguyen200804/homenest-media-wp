@@ -1,0 +1,160 @@
+/* ==========================================================================
+   FAQ SECTION (Template Part: template-parts/section/faq.php)
+   ========================================================================== */
+.faqSection {
+    background-color: #f0f2f4;
+    padding: 100px 0;
+}
+
+.faqItemHeader {
+    margin: 0;
+}
+
+.faqButton {
+    width: 100%;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    background: none;
+    border: 0;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    display: flex;
+    padding: 0;
+}
+
+.faqHeader {
+    width: 70%;
+    margin-left: auto;
+    padding-bottom: 50px;
+}
+
+.faqTitle {
+    font-size: 42px;
+    margin: 0;
+}
+
+.faqToggle {
+    flex-shrink: 0;
+    width: 20px;
+    display: inline-block;
+    margin-left: 20px;
+    transition: transform 0.3s ease;
+}
+
+.faqToggle svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    display: block;
+}
+
+.faqItemOpen .faqToggle {
+    transform: rotate(180deg);
+}
+
+.faqList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.faqItem {
+    display: flex;
+    border-bottom: 1px solid #000;
+}
+
+.faqIndex {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    height: 100px;
+}
+
+.faqIndexNumber {
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+}
+
+.faqItemContent {
+    width: 70%;
+}
+
+.faqQuestion {
+    font-size: 28px;
+    line-height: 1.2em;
+    font-weight: 600;
+}
+
+.faqAnswerWrapper {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition: grid-template-rows 0.35s ease, opacity 0.35s ease;
+}
+
+.faqItemOpen .faqAnswerWrapper {
+    grid-template-rows: 1fr;
+    opacity: 1;
+}
+
+.faqAnswerInner {
+    overflow: hidden;
+    min-height: 0;
+}
+
+.faqAnswer {
+    padding-bottom: 40px;
+    line-height: 1.6;
+    color: #444;
+}
+
+.faqAnswer p,
+.faqAnswer ul,
+.faqAnswer ol {
+    margin-bottom: 1em;
+}
+
+.faqAnswer ul,
+.faqAnswer ol {
+    padding-left: 1.5em;
+}
+
+.faqAnswer ul {
+    list-style-type: disc;
+}
+
+.faqAnswer ol {
+    list-style-type: decimal;
+}
+
+.faqAnswer li {
+    margin-bottom: 0.5em;
+}
+
+@media (max-width: 768px) {
+    .faqHeader {
+        width: 100%;
+    }
+    .faqItem {
+        flex-direction: column;
+    }
+    .faqIndex {
+        width: 100%;
+        height: auto;
+        padding-top: 20px;
+    }
+    .faqItemContent {
+        width: 100%;
+    }
+    .faqQuestion {
+        font-size: 20px;
+    }
+    .faqButton {
+        height: auto;
+        padding: 16px 0;
+    }
+}

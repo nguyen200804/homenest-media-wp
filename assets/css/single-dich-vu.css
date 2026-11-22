@@ -1,0 +1,1565 @@
+/**
+ * Single Dịch Vụ Stylesheet
+ * Dành cho Custom Post Type "dich-vu" (ví dụ: Dịch vụ SEO tổng thể)
+ */
+
+/* ==========================================================================
+   0. SHARED UTILITIES & BUTTONS
+   ========================================================================== */
+.textGradient {
+    background-image: linear-gradient(var(--tg-angle, 90deg), var(--tg-from, #386bb7), var(--tg-to, #e24c4a));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+
+.strokeGradient {
+    position: relative;
+    display: inline-block;
+    -webkit-text-stroke: var(--tg-stroke-width, 0.03em) transparent;
+}
+
+.strokeGradient::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    background: none;
+    pointer-events: none;
+    -webkit-text-fill-color: #fff;
+    -webkit-text-stroke: 0;
+}
+
+.anton {
+    font-family: var(--font-anton), "Anton", sans-serif;
+    font-weight: 400;
+}
+
+.manrope {
+    font-family: var(--font-manrope), "Manrope", sans-serif;
+}
+
+/* Button: Gradient Spin */
+.btnGradientSpin {
+    border-radius: 100px;
+    padding: .8em 1.6em;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    text-decoration: none;
+}
+
+.btnGradientSpin::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%) scale(2) rotate(0deg);
+    background-image: linear-gradient(to right, #386bb7 25%, #e24c4a 75%);
+    z-index: -1;
+    width: 100%;
+    aspect-ratio: 1;
+    transition: transform .3s ease;
+}
+
+.btnGradientSpin:hover::after {
+    transform: translateY(-50%) scale(2) rotate(-180deg);
+}
+
+.btnGradientSpin .btnInner {
+    display: flex;
+    align-items: center;
+}
+
+.btnGradientSpin .btnText {
+    color: #fff;
+    font-weight: 600;
+}
+
+.btnGradientSpin .btnIconLeft {
+    padding-right: 0.5em;
+    width: 0.8em;
+    overflow: hidden;
+    box-sizing: content-box;
+    transition: padding-right .3s ease, width .3s ease;
+}
+
+.btnGradientSpin .btnIconRight {
+    padding-left: 0em;
+    width: 0em;
+    overflow: hidden;
+    box-sizing: content-box;
+    transition: padding-left .3s ease, width .3s ease;
+}
+
+.btnGradientSpin svg {
+    fill: #fff;
+    width: 100%;
+    height: auto;
+}
+
+.btnGradientSpin:hover .btnIconLeft {
+    padding-right: 0em;
+    width: 0em;
+}
+
+.btnGradientSpin:hover .btnIconRight {
+    padding-left: .5em;
+    width: 0.8em;
+}
+
+/* Button: Transparent to Gradient */
+.btnTransparentToGradient {
+    border-radius: 100px;
+    padding: .8em 1.6em;
+    display: inline-block;
+    position: relative;
+    z-index: 0;
+    text-decoration: none;
+}
+
+.btnTransparentToGradient::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(var(--tg-angle, 90deg), var(--tg-from, #386bb7), var(--tg-to, #e24c4a));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+.btnTransparentToGradient::after {
+    content: "";
+    position: absolute;
+    inset: 0px;
+    background-image: linear-gradient(var(--tg-angle, 90deg), var(--tg-from, #386bb7), var(--tg-to, #e24c4a));
+    z-index: -1;
+    border-radius: 100px;
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+
+.btnTransparentToGradient:hover::after {
+    opacity: 1;
+}
+
+.btnTransparentToGradient .btnInner {
+    display: flex;
+    align-items: center;
+}
+
+.btnTransparentToGradient .btnText {
+    background-image: linear-gradient(90deg, #386bb7, #e24c4a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    font-weight: 600;
+    transition: color .3s ease;
+}
+
+.btnTransparentToGradient:hover .btnText {
+    -webkit-text-fill-color: #ffffff;
+    color: #ffffff;
+}
+
+.btnTransparentToGradient .btnIconLeft {
+    padding-right: 0.5em;
+    width: 0.8em;
+    overflow: hidden;
+    box-sizing: content-box;
+    transition: padding-right .3s ease, width .3s ease;
+}
+
+.btnTransparentToGradient .btnIconLeft svg {
+    fill: #386bb7;
+    width: 100%;
+    transition: fill .3s ease;
+}
+
+.btnTransparentToGradient .btnIconRight {
+    padding-left: 0em;
+    width: 0em;
+    overflow: hidden;
+    box-sizing: content-box;
+    transition: padding-left .3s ease, width .3s ease;
+}
+
+.btnTransparentToGradient .btnIconRight svg {
+    fill: #e24c4a;
+    width: 100%;
+    transition: fill .3s ease;
+}
+
+.btnTransparentToGradient:hover .btnIconLeft svg,
+.btnTransparentToGradient:hover .btnIconRight svg {
+    fill: #fff;
+}
+
+.btnTransparentToGradient:hover .btnIconLeft {
+    padding-right: 0em;
+    width: 0em;
+}
+
+.btnTransparentToGradient:hover .btnIconRight {
+    padding-left: .5em;
+    width: 0.8em;
+}
+
+/* ==========================================================================
+   1. SERVICE HERO SECTION
+   ========================================================================== */
+.serviceHero {
+    padding: 100px 0;
+    background: #f0f2f4;
+}
+
+.serviceHeroWrapper {
+    display: flex;
+    gap: 80px;
+    align-items: flex-start;
+}
+
+.serviceHeroHeader {
+    width: 60%;
+}
+
+@property --hn-color-1 { syntax: "<color>"; inherits: false; initial-value: #e64b48; }
+@property --hn-color-2 { syntax: "<color>"; inherits: false; initial-value: #2463ff; }
+@property --hn-color-3 { syntax: "<color>"; inherits: false; initial-value: #ff7a1a; }
+@property --hn-color-4 { syntax: "<color>"; inherits: false; initial-value: #5bb9ff; }
+@property --hn-color-5 { syntax: "<color>"; inherits: false; initial-value: #ff2831; }
+
+@keyframes hn-gradient-change {
+    0%   { --hn-color-1: #e64b48; --hn-color-2: #2463ff; --hn-color-3: #ff7a1a; --hn-color-4: #5bb9ff; --hn-color-5: #ff2831; }
+    25%  { --hn-color-1: #2463ff; --hn-color-2: #ff7a1a; --hn-color-3: #5bb9ff; --hn-color-4: #ff2831; --hn-color-5: #e64b48; }
+    50%  { --hn-color-1: #ff7a1a; --hn-color-2: #5bb9ff; --hn-color-3: #ff2831; --hn-color-4: #e64b48; --hn-color-5: #2463ff; }
+    75%  { --hn-color-1: #5bb9ff; --hn-color-2: #ff2831; --hn-color-3: #e64b48; --hn-color-4: #2463ff; --hn-color-5: #ff7a1a; }
+    100% { --hn-color-1: #ff2831; --hn-color-2: #e64b48; --hn-color-3: #2463ff; --hn-color-4: #ff7a1a; --hn-color-5: #5bb9ff; }
+}
+
+.serviceHeroHeading {
+    background: linear-gradient(to right, var(--hn-color-1, #e64b48), var(--hn-color-2, #2463ff), var(--hn-color-3, #ff7a1a), var(--hn-color-4, #5bb9ff), var(--hn-color-5, #ff2831));
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: 4s linear infinite alternate hn-gradient-change;
+    font-size: 60px;
+    line-height: 1.15;
+    margin: 0;
+}
+
+.serviceHeroContent {
+    width: 40%;
+}
+
+.serviceHeroDescription p,
+.serviceHeroDescription ul,
+.serviceHeroDescription ol {
+    margin-bottom: 1em;
+    line-height: 1.6;
+}
+
+.serviceHeroDescription ul,
+.serviceHeroDescription ol {
+    padding-left: 1.5em;
+    list-style-position: outside;
+}
+
+.serviceHeroDescription ul { list-style-type: disc; }
+.serviceHeroDescription ol { list-style-type: decimal; }
+.serviceHeroDescription li { display: list-item; }
+
+.serviceHeroAction {
+    margin-top: 50px;
+}
+
+/* ==========================================================================
+   2. SERVICE OVERVIEW SECTION
+   ========================================================================== */
+.serviceOverview {
+    background-color: #ffffff;
+    padding: 100px 0;
+}
+
+.serviceOverviewWrapper {
+    display: flex;
+    gap: 72px;
+    align-items: center;
+}
+
+.serviceOverviewContent {
+    flex: 1;
+}
+
+.serviceOverviewTitle {
+    margin-bottom: 20px;
+    font-size: 40px;
+    line-height: 1.25;
+}
+
+.serviceOverviewTitle span {
+    display: block !important;
+}
+
+.serviceOverviewDescription p,
+.serviceOverviewDescription ul,
+.serviceOverviewDescription ol {
+    margin-bottom: 1em;
+    line-height: 1.65;
+}
+
+.serviceOverviewDescription ul,
+.serviceOverviewDescription ol {
+    padding-left: 1.5em;
+    list-style-position: outside;
+}
+
+.serviceOverviewDescription ul { list-style-type: disc; }
+.serviceOverviewDescription ol { list-style-type: decimal; }
+.serviceOverviewDescription li { display: list-item; }
+
+.serviceOverviewMedia {
+    flex: 1;
+}
+
+.serviceOverviewImage {
+    border-radius: 20px;
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* ==========================================================================
+   3. SERVICE STRATEGY SECTION
+   ========================================================================== */
+.serviceStrategy {
+    background-color: #f0f2f4;
+    padding: 100px 0;
+}
+
+.serviceStrategyTitle {
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto 50px;
+    font-size: 42px;
+    line-height: 1.3;
+}
+
+.serviceStrategyWrapper {
+    display: flex;
+    gap: 12px;
+}
+
+.serviceStrategyMedia {
+    flex: 1;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.serviceStrategyVideo {
+    background-color: #000;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.serviceStrategyContent {
+    display: flex;
+    flex: 1;
+    gap: 12px;
+}
+
+.serviceStrategyGroup {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 0;
+    gap: 12px;
+    flex: 1;
+}
+
+.serviceStrategyCard {
+    gap: 16px;
+    padding: 32px 24px;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.serviceStrategyCard:not(.serviceStrategyGroup:first-child .serviceStrategyCard:last-child),
+.serviceStrategyCardBody {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.serviceStrategyGroup:first-child .serviceStrategyCard:first-child {
+    background: linear-gradient(150deg, #386bb7 13%, #f2295b 100%);
+    flex: 2;
+    justify-content: center;
+}
+
+.serviceStrategyGroup:first-child .serviceStrategyCard:last-child {
+    background: linear-gradient(331deg, #386bb7 8%, #f2295b 73%);
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.serviceStrategyGroup:last-child .serviceStrategyCard {
+    flex: 1;
+    position: relative;
+    z-index: 0;
+}
+
+.serviceStrategyGroup:last-child .serviceStrategyCard img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 50%;
+    height: auto;
+    z-index: -1;
+}
+
+.serviceStrategyGroup:last-child .serviceStrategyCard:last-child img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.6);
+}
+
+.serviceStrategyGroup:last-child .serviceStrategyCard:first-child {
+    background: #BEC6CD;
+}
+
+.serviceStrategyCardTitle {
+    color: #fff;
+    font-size: 24px;
+    margin: 0;
+}
+
+.serviceStrategyCardDivider {
+    color: #fff;
+    width: 40%;
+    margin: 0;
+    border: none;
+    border-top: 2px solid #fff;
+}
+
+.serviceStrategyCardDesc {
+    color: #fff;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.serviceStrategyCardIcon {
+    min-width: 36px;
+    width: 36px;
+}
+
+.serviceStrategyCardIcon svg {
+    width: 30px;
+    height: 49px;
+}
+
+/* ==========================================================================
+   4. SEO INTRO SECTION
+   ========================================================================== */
+.seoIntro {
+    padding: 100px 0;
+}
+
+.seoIntroWrapper {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+}
+
+.seoIntroHeader {
+    width: 750px;
+}
+
+.seoIntroTitle {
+    font-size: 38px;
+    line-height: 1.3;
+    margin: 0;
+}
+
+.seoIntroBrand {
+    width: 450px;
+    align-self: center;
+}
+
+.seoIntroLogo {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.seoIntroContent {
+    display: flex;
+    gap: 40px;
+    margin-top: 50px;
+    width: 100%;
+}
+
+.seoIntroColLeft {
+    flex: 6;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.seoIntroImageMain {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    display: block;
+}
+
+.seoIntroDescription {
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.seoIntroDescription a {
+    color: #386bb7;
+    text-decoration: underline;
+}
+
+.seoIntroButton {
+    margin-top: auto;
+}
+
+.seoIntroColRight {
+    flex: 4;
+}
+
+.seoIntroImageSecondary {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
+}
+
+/* ==========================================================================
+   5. SERVICE PRICE TABLE SECTION
+   ========================================================================== */
+.servicePriceTable {
+    padding: 100px 0;
+}
+
+.servicePriceTableWrapper {
+    margin-left: calc(((max(100vw, 1400px) - 1400px) / 4) * -1);
+    margin-right: calc(((max(100vw, 1400px) - 1400px) / 4) * -1);
+}
+
+.servicePriceTableHeader {
+    max-width: 1000px;
+    margin: 0 auto 50px;
+    text-align: center;
+}
+
+.servicePriceTableTitle {
+    font-size: 40px;
+    line-height: 1.3;
+}
+
+.servicePriceTableList {
+    display: flex;
+}
+
+.servicePriceTableCard {
+    padding: 0 10px;
+    flex: 1;
+}
+
+.servicePriceTableCardItem {
+    background-color: #f0f2f4;
+    border-radius: 16px;
+    padding: 24px 24px 32px;
+    border: 1px solid #DDDDDD;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.servicePriceTableCardHeader {
+    position: relative;
+    margin-left: -34px;
+    width: 50%;
+}
+
+.servicePriceTableCardImage {
+    width: 100%;
+    height: 46px;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+}
+
+.servicePriceTableCardTitle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.servicePriceTableCardDesc {
+    margin-top: 16px;
+    line-height: 1.5;
+    font-size: 15px;
+}
+
+.servicePriceTableCardDesc > strong:first-of-type {
+    color: var(--plan-color, inherit);
+}
+
+.servicePriceTableCardDivider {
+    margin: 14px 0;
+    border: none;
+    border-top: 1px solid #DDDDDD;
+}
+
+.servicePriceTableFeatureList {
+    font-size: .9em;
+    margin-bottom: auto;
+    padding: 0;
+    list-style: none;
+}
+
+.servicePriceTableFeatureItem {
+    display: flex;
+    align-items: flex-start;
+}
+
+.servicePriceTableFeatureItem:not(:first-child) {
+    margin-top: 0.6em;
+}
+
+.servicePriceTableFeatureItem svg {
+    color: var(--plan-color, currentColor);
+    min-width: 1.4em;
+    width: 1.4em;
+    height: 1.4em;
+    margin-right: 0.8em;
+    flex-shrink: 0;
+}
+
+.servicePriceTableFeatureItem span {
+    line-height: 1.4em;
+}
+
+.servicePriceTableCardNote {
+    font-size: 13px;
+    color: #666;
+    margin: 12px 0 0;
+    font-style: italic;
+}
+
+.servicePriceTableCardFooter {
+    height: 45px;
+    display: flex;
+    margin-top: 16px;
+    gap: 8px;
+}
+
+.servicePriceTablePhoneBtn {
+    width: 30%;
+    height: 100%;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, #e64b48, #2463ff, #ff7a1a, #5bb9ff, #ff2831);
+    background-size: 500% 100%;
+    animation: moveGradient 10s linear infinite;
+    text-decoration: none;
+}
+
+.servicePriceTablePhoneBtn svg {
+    color: #fff;
+    width: 20px;
+    height: 20px;
+}
+
+@keyframes moveGradient {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.servicePriceTablePriceInfo {
+    width: 70%;
+    position: relative;
+    background: #fff;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4px 12px;
+    border: 1px solid #ddd;
+}
+
+.servicePriceTablePriceNumber {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111;
+    line-height: 1.2;
+}
+
+.servicePriceTablePriceText {
+    font-size: 12px;
+    color: #777;
+}
+
+/* ==========================================================================
+   6. CTA SECTION
+   ========================================================================== */
+.ctaWrapper {
+    width: 100%;
+    margin: 0 auto;
+    padding: 50px 0px;
+    box-sizing: border-box;
+}
+
+.ctaCard {
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    width: 100%;
+    padding: 40px 340px 40px 56px;
+    border-radius: 24px;
+    overflow: visible;
+    background: linear-gradient(262deg, #E24C4A 0%, #386BB7 100%);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: inset 0px 2px 4px 0px rgba(255, 255, 255, 0.4),
+                0px 25px 25px -3.75px rgba(86, 125, 176, 0.11),
+                0px 0px 0px 1px #E24C4A;
+}
+
+.ctaContent {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+    gap: 40px;
+    flex: 1 0 0;
+    min-width: 0;
+}
+
+.ctaHeader {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+    gap: 24px;
+    width: 100%;
+}
+
+.ctaBadge {
+    background: #fff3;
+    border-radius: 99px;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.4em 1.4em;
+    display: flex;
+}
+
+.ctaBadgeDot {
+    width: 0.5em;
+    height: 0.5em;
+    border-radius: 50%;
+    background: #fff;
+    flex-shrink: 0;
+}
+
+.ctaBadgeText {
+    font-weight: 500;
+    color: #fff;
+    white-space: nowrap;
+    font-size: 14px;
+}
+
+.ctaHeading {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: #fff;
+    width: 100%;
+}
+
+.ctaDescription {
+    margin: 0;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 400;
+}
+
+.ctaButton {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 24px;
+    border-radius: 24px;
+    background: #fff;
+    color: #386bb7;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.ctaButton:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+}
+
+.ctaImageWrapper {
+    position: absolute;
+    bottom: 0;
+    right: 40px;
+    z-index: 2;
+    width: 270px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.ctaImage {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* ==========================================================================
+   7. DATA SECTION
+   ========================================================================== */
+.dataSection {
+    padding: 100px 0;
+    background-image: linear-gradient(to bottom, #fff, #f0f2f4);
+}
+
+.dataTitle {
+    max-width: 1000px;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 38px;
+    line-height: 1.3;
+}
+
+.dataStatList {
+    gap: 40px;
+    display: flex;
+    margin: 72px 0 72px;
+    padding: 0;
+    list-style: none;
+}
+
+.dataStatItem {
+    flex: 1;
+    text-align: center;
+}
+
+.dataStatNumber {
+    font-size: 80px;
+    line-height: 1em;
+    margin: 0 0 10px;
+}
+
+.dataStatLabel {
+    font-size: 20px;
+    margin: 0;
+    color: #333;
+}
+
+.dataCardList {
+    display: flex;
+    gap: 24px;
+    padding: 0;
+    list-style: none;
+}
+
+.dataCardItem {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    flex: 1;
+}
+
+.dataCardImage {
+    width: 100%;
+    aspect-ratio: 16/10;
+    object-fit: cover;
+    display: block;
+}
+
+.dataCardDesc {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: flex-end;
+    padding: 32px;
+    color: #fff;
+    background: linear-gradient(to top, black 0%, transparent 70%);
+    font-size: 20px;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* ==========================================================================
+   8. ACCOMPANY SECTION
+   ========================================================================== */
+.accompanySection {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 80px 0;
+    align-items: center;
+    background: #fff;
+}
+
+.accompanyDecor {
+    width: 20%;
+}
+
+.accompanyDecorImage {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.accompanyQuote {
+    width: 80%;
+    box-sizing: border-box;
+    padding-left: 5vw;
+}
+
+.accompanyQuoteText {
+    font-size: 56px;
+    line-height: 1.15;
+    margin: 0 0 20px;
+}
+
+.accompanyQuoteAuthor {
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
+}
+
+.accompanyQuoteSignature {
+    height: 70px;
+    width: auto;
+}
+
+.accompanyQuoteRole {
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    color: #888;
+}
+
+.accompanyMarquee {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 50px;
+}
+
+.accompanyMarqueeWrapper {
+    width: fit-content;
+    display: flex;
+    animation: marquee-scroll 25s linear infinite;
+}
+
+@keyframes marquee-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.accompanyMarqueeGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.accompanyMarqueeLine {
+    display: flex;
+    gap: 12px;
+}
+
+.accompanyMarqueeItem {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    background: #fff;
+}
+
+.accompanyMarqueeItemWide { aspect-ratio: 2; height: 60px; }
+.accompanyMarqueeItemSquare { aspect-ratio: 1; height: 60px; }
+.accompanyMarqueeImage { max-height: 100%; width: auto; object-fit: contain; }
+
+/* ==========================================================================
+   9. PROCEDURE SECTION
+   ========================================================================== */
+.procedureSection {
+    padding: 100px 0;
+    position: relative;
+    z-index: 0;
+    background: #111;
+}
+
+.procedureBackground {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.4;
+}
+
+.procedureHeader {
+    color: #fff;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.procedureTitle {
+    margin: 0;
+    font-size: 40px;
+    line-height: 1.25;
+    flex: 1;
+}
+
+.procedureDescription {
+    font-size: 18px;
+    line-height: 1.6em;
+    max-width: 520px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.procedureDescription a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.procedureList {
+    display: flex;
+    list-style: none;
+    height: 450px;
+    padding: 0;
+    gap: 12px;
+    margin: 0;
+}
+
+.procedureItem {
+    height: 100%;
+    flex-grow: 1;
+    transition: all .4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    background-size: cover;
+    background-position: center;
+}
+
+.procedureItem:not(.procedureItemActive) {
+    cursor: pointer;
+}
+
+.procedureItemActive {
+    flex-grow: 8;
+}
+
+.procedureItemActive .procedureCollapsed {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.procedureCollapsed {
+    background-color: #fff;
+    opacity: 1;
+    transition: opacity .3s ease;
+    position: absolute;
+    inset: 0;
+}
+
+.procedureCollapsedNumber {
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 16px;
+    font-family: var(--font-anton), "Anton", sans-serif;
+    font-size: 32px;
+    background-image: linear-gradient(262deg, #E24C4A 0%, #386BB7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.procedureCollapsedTitle {
+    writing-mode: vertical-rl;
+    margin: 0;
+    transform: rotate(180deg) translateX(50%);
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    font-size: 18px;
+    font-weight: 600;
+    color: #222;
+    white-space: nowrap;
+}
+
+.procedureExpanded {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    right: 24px;
+    display: grid;
+    grid-template-areas: "num head" "ctn ctn";
+    grid-template-columns: 80px 1fr;
+    grid-gap: 16px;
+    opacity: 0;
+    animation: procedureFadeIn .3s linear .2s forwards;
+    align-items: center;
+}
+
+.procedureItem:not(.procedureItemActive) .procedureExpanded {
+    display: none;
+}
+
+.procedureExpandedNumber {
+    grid-area: num;
+    font-family: var(--font-anton), "Anton", sans-serif;
+    font-size: 72px;
+    line-height: 1;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #fff;
+    color: transparent;
+}
+
+.procedureExpandedTitle {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.procedureExpandedDesc {
+    margin: 0;
+    grid-area: ctn;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+}
+
+@keyframes procedureFadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* ==========================================================================
+   10. SERVICE WHY TRUST SECTION
+   ========================================================================== */
+.serviceWhyTrust {
+    background-color: #f0f2f4;
+    padding: 100px 0;
+}
+
+.serviceWhyTrustHeader {
+    max-width: 1000px;
+    margin: 0 auto 50px;
+    text-align: center;
+}
+
+.serviceWhyTrustTitle {
+    font-size: 40px;
+    line-height: 1.3;
+}
+
+.serviceWhyTrustContent {
+    display: flex;
+    gap: 40px;
+}
+
+.serviceWhyTrustColImage {
+    flex: 4;
+}
+
+.serviceWhyTrustImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
+}
+
+.serviceWhyTrustList {
+    grid-gap: 32px;
+    flex: 6;
+    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+
+.serviceWhyTrustItem {
+    background-color: #fff;
+    padding: 28px;
+    border-radius: 16px;
+}
+
+.serviceWhyTrustItemIcon {
+    display: inline-flex;
+    padding: 14px;
+    border-radius: 12px;
+    background-image: linear-gradient(var(--tg-angle, 90deg), var(--tg-from, #386bb7), var(--tg-to, #e24c4a));
+    color: #fff;
+}
+
+.serviceWhyTrustItemIcon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.serviceWhyTrustItemTitle {
+    font-size: 20px;
+    margin: 14px 0 8px;
+    color: #111;
+}
+
+.serviceWhyTrustItemDesc {
+    color: #666;
+    line-height: 1.5;
+    font-size: 15px;
+}
+
+/* ==========================================================================
+   11. SERVICE BENEFITS SECTION
+   ========================================================================== */
+.serviceBenefits {
+    padding: 100px 0;
+    background: #fff;
+}
+
+.serviceBenefitsWrapper {
+    display: flex;
+    gap: 50px;
+}
+
+.serviceBenefitsColImage {
+    width: 50%;
+    align-self: flex-start;
+    position: sticky;
+    top: 100px;
+}
+
+.serviceBenefitsImage {
+    width: 100%;
+    height: auto;
+    border-radius: 0 20px 20px 0;
+    display: block;
+}
+
+.serviceBenefitsContent {
+    width: 50%;
+    padding-right: calc((100vw - 1400px) / 2);
+    box-sizing: border-box;
+}
+
+.serviceBenefitsTitle {
+    font-size: 38px;
+    line-height: 1.3;
+}
+
+.serviceBenefitsList {
+    margin: 50px 0;
+}
+
+.serviceBenefitsItem {
+    display: flex;
+    gap: 20px;
+}
+
+.serviceBenefitsItem:not(:last-child) {
+    padding-bottom: 32px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid #ddd;
+}
+
+.serviceBenefitsItemBadge {
+    width: 15%;
+}
+
+.serviceBenefitsItemNumber {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.serviceBenefitsItemBody {
+    width: 85%;
+}
+
+.serviceBenefitsItemTitle {
+    font-size: 24px;
+    margin: 0;
+    color: #111;
+}
+
+.serviceBenefitsItemDesc {
+    margin-top: 16px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.serviceBenefitsAction {
+    margin-top: 20px;
+}
+
+/* ==========================================================================
+   12. SERVICE REVIEW SECTION
+   ========================================================================== */
+.serviceReview {
+    --radius: 24px;
+    padding: 100px 0;
+}
+
+.serviceReviewWrapper {
+    border-radius: var(--radius);
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    padding-top: 150px;
+    background: #000;
+}
+
+.serviceReviewBackground {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+}
+
+.serviceReviewColSlider {
+    color: #fff;
+    background: #181818;
+    border-radius: var(--radius);
+    width: 50%;
+    padding: 100px 80px 140px;
+    position: relative;
+    z-index: 1;
+}
+
+.serviceReviewSlider {
+    position: relative;
+    min-height: 200px;
+}
+
+.serviceReviewSlideItem {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.serviceReviewSlideItem.active {
+    display: block;
+    opacity: 1;
+}
+
+.serviceReviewQuoteIcon {
+    width: 60px;
+    display: inline-block;
+    color: #e24c4a;
+}
+
+.serviceReviewQuoteIcon svg {
+    width: 100%;
+    height: auto;
+}
+
+.serviceReviewQuoteText {
+    font-size: 22px;
+    line-height: 1.5;
+    margin-top: 16px;
+    margin-bottom: 24px;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.serviceReviewAuthor {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+}
+
+.serviceReviewNav {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #fff;
+    border-radius: var(--radius) 0 0 0;
+    display: flex;
+}
+
+.serviceReviewNavButton {
+    color: #000;
+    cursor: pointer;
+    background: none;
+    border: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    transition: background .3s, color .3s;
+}
+
+.serviceReviewNavButton:hover {
+    background: #386bb7;
+    color: #fff;
+}
+
+.serviceReviewNavButton svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
+.serviceReviewColContent {
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50%;
+    padding: 0 80px 80px;
+    display: flex;
+    color: #fff;
+    position: relative;
+    z-index: 1;
+}
+
+.serviceReviewTitle {
+    color: #fff;
+    font-weight: 400;
+    font-size: 44px;
+    line-height: 1.3;
+    margin: 0;
+}
+
+.serviceReviewStatNumber {
+    font-size: 90px;
+    font-weight: 900;
+    line-height: 0.9em;
+    color: transparent;
+    -webkit-text-stroke-color: #fff;
+    -webkit-text-stroke-width: 1px;
+    letter-spacing: -0.03em;
+    margin: 30px 0 10px;
+}
+
+.serviceReviewStatLabel {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* ==========================================================================
+   14. RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+@media (max-width: 1200px) {
+    .serviceHeroWrapper { gap: 40px; }
+    .serviceHeroHeading { font-size: 46px; }
+    .servicePriceTableList { flex-wrap: wrap; gap: 20px; }
+    .servicePriceTableCard { flex: 0 0 calc(50% - 10px); }
+    .ctaCard { padding-right: 56px; }
+    .ctaImageWrapper { display: none; }
+    .serviceReviewWrapper { flex-direction: column; padding-top: 50px; }
+    .serviceReviewColSlider, .serviceReviewColContent { width: 100%; padding: 50px 40px; }
+}
+
+@media (max-width: 992px) {
+    .serviceHeroWrapper,
+    .serviceOverviewWrapper,
+    .serviceStrategyWrapper,
+    .serviceStrategyContent,
+    .seoIntroContent,
+    .serviceWhyTrustContent,
+    .serviceBenefitsWrapper {
+        flex-direction: column;
+    }
+    .serviceHeroHeader, .serviceHeroContent,
+    .serviceOverviewContent, .serviceOverviewMedia,
+    .seoIntroHeader, .seoIntroBrand, .seoIntroColLeft, .seoIntroColRight,
+    .serviceBenefitsColImage, .serviceBenefitsContent {
+        width: 100%;
+        max-width: 100%;
+    }
+    .serviceBenefitsColImage { position: static; }
+    .serviceBenefitsContent { padding-right: 0; }
+    .dataStatList, .dataCardList { flex-direction: column; }
+    .serviceWhyTrustList { grid-template-columns: 1fr; }
+    .procedureHeader { flex-direction: column; gap: 20px; }
+    .procedureList { height: auto; flex-direction: column; }
+    .procedureItem { height: 120px; flex-grow: 0; }
+    .procedureItemActive { height: auto; min-height: 200px; }
+    .procedureCollapsed { display: none; }
+    .procedureExpanded { position: static; padding: 24px; opacity: 1; }
+    .procedureItem:not(.procedureItemActive) .procedureExpanded { display: block; }
+    .procedureItem:not(.procedureItemActive) .procedureExpandedDesc { display: none; }
+}
+
+@media (max-width: 768px) {
+    .serviceHeroHeading { font-size: 34px; }
+    .serviceOverviewTitle, .serviceStrategyTitle, .seoIntroTitle, .dataTitle, .serviceWhyTrustTitle, .serviceBenefitsTitle, .serviceReviewTitle {
+        font-size: 28px;
+    }
+    .servicePriceTableCard { flex: 0 0 100%; }
+    .dataStatNumber { font-size: 56px; }
+    .accompanySection { flex-direction: column; }
+    .accompanyDecor, .accompanyQuote { width: 100%; padding: 0; }
+    .accompanyQuoteText { font-size: 32px; }
+}

@@ -1,0 +1,263 @@
+/* ==========================================================================
+   ARCHIVE PAGE STYLES (Giao diện kho lưu trữ dùng chung)
+   HomeNest Media
+   ========================================================================== */
+
+.archive-section {
+  padding: 50px 0 90px;
+  background-color: #f8fafc;
+  min-height: 70vh;
+}
+
+/* 1. Wrapper 2 cột: Main Content & Sidebar */
+.archive-wrapper {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 380px;
+  gap: 40px;
+  align-items: start;
+}
+
+/* 2. Cột nội dung chính */
+.archive-content-col {
+  min-width: 0;
+}
+
+/* Header kho lưu trữ */
+.archive-header {
+  margin-bottom: 36px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.archive-title {
+  font-size: 48px;
+  font-weight: 600;
+  /* color: var(--color-primary, #1b2366); */
+  margin-bottom: 12px;
+  line-height: 1.3;
+  position: relative;
+  display: inline-block;
+}
+
+.archive-title::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 3px;
+  background: var(--bg-gradient, linear-gradient(262deg, #386BB7 0%, #E24C4A 100%));
+  margin-top: 12px;
+  border-radius: 0px;
+}
+
+.archive-description {
+  font-size: 1em;
+  color: #7e7e7e;
+  line-height: 1.6em;
+}
+
+.archive-description p {
+  margin: 0;
+  font-size: 1em;
+  line-height: inherit;
+}
+
+/* Lưới bài viết (Archive Posts Grid) */
+.archive-posts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-bottom: 40px;
+}
+
+.archive-posts-grid> :where(.archive-card.card-image:first-of-type, .archive-card.card-no-image) {
+  grid-column: 1/3;
+}
+
+
+/* Khối dịch vụ tiêu biểu */
+.archive-services-block {
+  margin-top: 50px;
+  margin-bottom: 48px;
+  padding: 32px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.archive-services-header {
+  margin-bottom: 24px;
+}
+
+.archive-services-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-primary, #1b2366);
+  margin-bottom: 6px;
+  position: relative;
+  display: inline-block;
+}
+
+.archive-services-subtitle {
+  font-size: 0.95rem;
+  color: var(--color-muted, #6b7280);
+  margin: 0;
+}
+
+.archive-services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+/* 3. Phân trang (Pagination) */
+.pagination-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 36px;
+}
+
+.pagination-wrap .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pagination-wrap .page-numbers {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: var(--color-primary, #1b2366);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.pagination-wrap .page-numbers:hover:not(.current):not(.dots) {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.pagination-wrap .page-numbers.current {
+  background: var(--color-accent, #e2413b);
+  border-color: var(--color-accent, #e2413b);
+  color: #ffffff;
+}
+
+.pagination-wrap .page-numbers.dots {
+  border: none;
+  background: transparent;
+  color: #94a3b8;
+}
+
+/* 4. Empty State (No results) */
+.no-results {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 50px 24px;
+  text-align: center;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+  border: 1px solid #e2e8f0;
+}
+
+.no-results-icon {
+  color: #94a3b8;
+  margin-bottom: 16px;
+}
+
+.no-results-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-primary, #1b2366);
+  margin-bottom: 10px;
+}
+
+.no-results-desc {
+  color: var(--color-muted, #6b7280);
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+.no-results-search {
+  max-width: 360px;
+  margin: 0 auto 20px;
+}
+
+.no-results-search form {
+  display: flex;
+  gap: 8px;
+}
+
+.no-results-search input[type="search"] {
+  flex-grow: 1;
+  padding: 9px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.no-results-search button[type="submit"] {
+  padding: 9px 18px;
+  background: var(--color-primary, #1b2366);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-return-home {
+  display: inline-block;
+  padding: 10px 22px;
+  background: var(--color-accent, #e2413b);
+  color: #ffffff;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   7. RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .archive-wrapper {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .archive-sidebar-inner {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .archive-posts-grid,
+  .archive-services-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .archive-sidebar-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .archive-title {
+    font-size: 1.6rem;
+  }
+
+  .archive-services-block {
+    padding: 24px 16px;
+  }
+}

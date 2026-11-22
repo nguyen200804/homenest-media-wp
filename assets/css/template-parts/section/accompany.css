@@ -1,0 +1,126 @@
+/* ==========================================================================
+   ACCOMPANY SECTION (Template Part: template-parts/section/accompany.php)
+   ========================================================================== */
+.accompanySection {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 100px;
+}
+
+.accompanyDecor {
+    width: 20%;
+}
+
+.accompanyDecorImage {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.accompanyQuote {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 72px;
+    padding-left: 100px;
+    padding-right: calc((100vw - 1415px) / 2);
+    padding-bottom: 40px;
+    box-sizing: border-box;
+}
+
+.accompanyQuoteText {
+    font-size: 72px;
+    line-height: 1.2em;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin: 0;
+}
+
+.accompanyQuoteAuthor {
+    display: flex;
+    align-items: flex-end;
+    align-self: flex-end;
+    gap: 16px;
+    padding: 0px 24px 14px;
+    border-bottom: 1px solid #000;
+    opacity: 0.5;
+}
+
+.accompanyQuoteSignature {
+    height: 92px;
+    width: auto;
+    display: block;
+}
+
+.accompanyQuoteRole {
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+.accompanyMarquee {
+    width: 100%;
+    overflow: hidden;
+    margin-top: -40px;
+    position: relative;
+    z-index: -1;
+}
+
+.accompanyMarqueeWrapper {
+    width: fit-content;
+    display: flex;
+    animation: marquee 45s linear infinite;
+}
+
+.accompanyMarqueeLine {
+    display: flex;
+}
+
+.accompanyMarqueeItem {
+    border: 1px solid #000;
+    height: 100px;
+    border-right: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    box-sizing: border-box;
+}
+
+.accompanyMarqueeLine:last-child .accompanyMarqueeItem {
+    border-bottom: 1px solid #000000 !important;
+}
+
+.accompanyMarqueeItemWide {
+    aspect-ratio: 2;
+}
+
+.accompanyMarqueeItemSquare {
+    aspect-ratio: 1;
+}
+
+.accompanyMarqueeImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 996px) {
+    .accompanyDecor {
+        width: 100%;
+    }
+    .accompanyQuote {
+        width: 100%;
+        padding: 40px 20px;
+    }
+    .accompanyQuoteText {
+        font-size: 42px;
+    }
+}

@@ -1,0 +1,327 @@
+/*
+Theme Name: My Theme
+Theme URI: https://example.com/my-theme
+Author: Your Name
+Author URI: https://example.com
+Description: Theme WordPress cơ bản, gọn nhẹ, chuẩn SEO, tích hợp giao diện HomeNest.media.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.6
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: my-theme
+Tags: blog, custom-menu, featured-images, translation-ready
+*/
+
+/* ==========================================================================
+   1. ROOT VARIABLES
+   ========================================================================== */
+:root {
+  --color-text: #171717;
+  --color-bg: #ffffff;
+  --color-primary: #1b2366;
+  --color-accent: #e2413b;
+  --color-muted: #6b7280;
+  --color-border: #dcdce0;
+  --bg-gradient: linear-gradient(to right, #386BB7 0%, #E24C4A 100%);
+  --font-homenest: 'HomeNest', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: var(--font-homenest), Arial, Helvetica, sans-serif;
+  --container-max-width: 1400px;
+}
+
+.textGradient {
+  --tg-angle: 90deg;
+  --tg-from: #386bb7;
+  --tg-to: #e24c4a;
+  background: linear-gradient(var(--tg-angle), var(--tg-from), var(--tg-to));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* ==========================================================================
+   2. RESET & BASE ELEMENTS
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 18px;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  line-height: 1.25em;
+  letter-spacing: -0.04em;
+  color: var(--color-text);
+  margin-top: 0;
+  margin-bottom: 0.6em;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1em;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-accent);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ==========================================================================
+   3. SECTION, CONTAINER & LAYOUT UTILITIES
+   ========================================================================== */
+.section {
+  width: 100%;
+  padding-inline: 2.85vw;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  box-sizing: border-box;
+}
+
+.fullwidth,
+.fullWidth {
+  width: 100%;
+  max-width: 100%;
+  padding-inline: 40px;
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Breakpoints
+   -------------------------------------------------------------------------- */
+
+/* Màn hình siêu lớn (>= 2000px) */
+@media (min-width: 2000px) {
+  html {
+    font-size: 18px;
+  }
+
+  .container {
+    max-width: 1600px;
+  }
+}
+
+/* Màn hình lớn (<= 1600px) */
+@media (max-width: 1600px) {
+  html {
+    font-size: 17px;
+  }
+
+  .container {
+    max-width: 1320px;
+  }
+}
+
+/* Laptop (<= 1400px) */
+@media (max-width: 1400px) {
+  html {
+    font-size: 16px;
+  }
+
+  .container {
+    max-width: 1320px;
+  }
+}
+
+/* Màn hình trung bình / Tablet ngang (<= 1200px) */
+@media (max-width: 1200px) {
+
+  .section {
+    padding-inline: 32px;
+  }
+}
+
+/* Tablet dọc (<= 996px) */
+@media (max-width: 996px) {
+
+
+  .section {
+    padding-inline: 28px;
+  }
+}
+
+/* Mobile ngang / Tablet nhỏ (<= 768px) */
+@media (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+
+  .section {
+    padding-inline: 24px;
+  }
+}
+
+/* Mobile thông thường (<= 576px) */
+@media (max-width: 576px) {
+
+
+
+  .section {
+    padding-inline: 20px;
+  }
+}
+
+/* Mobile nhỏ (<= 425px) */
+@media (max-width: 425px) {
+  html {
+    font-size: 14px;
+  }
+
+
+  .section {
+    padding-inline: 16px;
+  }
+}
+
+/* ==========================================================================
+   4. CONTENT & POST LAYOUTS
+   ========================================================================== */
+.site-content {
+  padding: 40px 0;
+  min-height: 60vh;
+}
+
+.site-content--front-page {
+  padding: 0;
+  min-height: auto;
+}
+
+.post-card {
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.entry-title {
+  margin: 0 0 8px;
+  font-size: 1.8rem;
+}
+
+.entry-meta {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+
+.post-thumbnail {
+  margin-bottom: 16px;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  gap: 8px;
+  margin-top: 30px;
+  align-items: center;
+}
+
+.pagination .page-numbers {
+  padding: 6px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  color: var(--color-text);
+}
+
+.pagination .page-numbers:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.pagination .current {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+/* ==========================================================================
+   5. WORDPRESS CORE UTILITIES
+   ========================================================================== */
+.alignleft {
+  float: left;
+  margin: 0 20px 10px 0;
+}
+
+.alignright {
+  float: right;
+  margin: 0 0 10px 20px;
+}
+
+.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
+}
+
+.screen-reader-text:focus {
+  background-color: #f1f1f1;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+  clip: auto !important;
+  clip-path: none;
+  color: #21759b;
+  display: block;
+  font-size: 14px;
+  font-size: 0.875rem;
+  font-weight: bold;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000;
+}
