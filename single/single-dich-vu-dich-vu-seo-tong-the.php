@@ -28,17 +28,15 @@ $theme_uri = get_template_directory_uri();
                         <p>Kế hoạch thực hiện, chi phí và thời hạn được xác nhận theo nhu cầu thực tế trong báo giá hoặc hợp đồng.</p>
                     </div>
                     <div class="serviceHeroAction">
-                        <a href="https://zalo.me/+84708070888" target="_blank" rel="noopener noreferrer" class="btnGradientSpin">
-                            <span class="btnInner">
-                                <span class="btnIconLeft" aria-hidden="true">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M388.819 239.537 156.092 6.816c-9.087-9.089-23.824-9.089-32.912.002-9.087 9.089-9.087 23.824.002 32.912l216.27 216.266-216.273 216.276c-9.087 9.089-9.087 23.824.002 32.912A23.2 23.2 0 0 0 139.636 512a23.2 23.2 0 0 0 16.457-6.817L388.819 272.45a23.27 23.27 0 0 0 0-32.913"/></svg>
-                                </span>
-                                <span class="btnText">Tư vấn miễn phí</span>
-                                <span class="btnIconRight" aria-hidden="true">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M388.819 239.537 156.092 6.816c-9.087-9.089-23.824-9.089-32.912.002-9.087 9.089-9.087 23.824.002 32.912l216.27 216.266-216.273 216.276c-9.087 9.089-9.087 23.824.002 32.912A23.2 23.2 0 0 0 139.636 512a23.2 23.2 0 0 0 16.457-6.817L388.819 272.45a23.27 23.27 0 0 0 0-32.913"/></svg>
-                                </span>
-                            </span>
-                        </a>
+                        <?php
+                        get_template_part( 'template-parts/ui/button', null, array(
+                            'text'   => 'Tư vấn miễn phí',
+                            'url'    => 'https://zalo.me/+84708070888',
+                            'target' => '_blank',
+                            'rel'    => 'noopener noreferrer',
+                            'class'  => 'btnGradientSpin',
+                        ) );
+                        ?>
                     </div>
                 </div>
             </div>

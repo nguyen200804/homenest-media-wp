@@ -41,75 +41,7 @@
     font-family: var(--font-manrope), "Manrope", sans-serif;
 }
 
-/* Button: Gradient Spin */
-.btnGradientSpin {
-    border-radius: 100px;
-    padding: .8em 1.6em;
-    display: inline-block;
-    position: relative;
-    overflow: hidden;
-    z-index: 0;
-    text-decoration: none;
-}
-
-.btnGradientSpin::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%) scale(2) rotate(0deg);
-    background-image: linear-gradient(to right, #386bb7 25%, #e24c4a 75%);
-    z-index: -1;
-    width: 100%;
-    aspect-ratio: 1;
-    transition: transform .3s ease;
-}
-
-.btnGradientSpin:hover::after {
-    transform: translateY(-50%) scale(2) rotate(-180deg);
-}
-
-.btnGradientSpin .btnInner {
-    display: flex;
-    align-items: center;
-}
-
-.btnGradientSpin .btnText {
-    color: #fff;
-    font-weight: 600;
-}
-
-.btnGradientSpin .btnIconLeft {
-    padding-right: 0.5em;
-    width: 0.8em;
-    overflow: hidden;
-    box-sizing: content-box;
-    transition: padding-right .3s ease, width .3s ease;
-}
-
-.btnGradientSpin .btnIconRight {
-    padding-left: 0em;
-    width: 0em;
-    overflow: hidden;
-    box-sizing: content-box;
-    transition: padding-left .3s ease, width .3s ease;
-}
-
-.btnGradientSpin svg {
-    fill: #fff;
-    width: 100%;
-    height: auto;
-}
-
-.btnGradientSpin:hover .btnIconLeft {
-    padding-right: 0em;
-    width: 0em;
-}
-
-.btnGradientSpin:hover .btnIconRight {
-    padding-left: .5em;
-    width: 0.8em;
-}
+/* Button: Gradient Spin đã được bóc tách sang assets/css/template-parts/ui/button.css */
 
 /* Button: Transparent to Gradient */
 .btnTransparentToGradient {
