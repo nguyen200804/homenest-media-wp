@@ -67,6 +67,17 @@ if ( post_password_required() ) {
 					</div>',
 	);
 
+	ob_start();
+	get_template_part( 'template-parts/ui/button', null, array(
+		'text'  => '%4$s',
+		'tag'   => 'button',
+		'type'  => 'submit',
+		'name'  => '%1$s',
+		'id'    => '%2$s',
+		'class' => '%3$s',
+	) );
+	$submit_button_html = ob_get_clean();
+
 	$comment_form_args = array(
 		'title_reply'          => __( 'Để lại bình luận', 'my-theme' ),
 		'title_reply_to'       => __( 'Trả lời bình luận của %s', 'my-theme' ),
@@ -90,15 +101,8 @@ if ( post_password_required() ) {
 								  </div>',
 		'fields'               => $custom_fields,
 		'class_form'           => 'comment-form custom-comment-form',
-		'class_submit'         => 'btn-submit-comment',
-		'submit_button'        => '<button name="%1$s" type="submit" id="%2$s" class="%3$s">
-									  <span class="btn-comment-arrow" aria-hidden="true">
-										  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-											  <polyline points="9 18 15 12 9 6"></polyline>
-										  </svg>
-									  </span>
-									  <span class="btn-comment-text">%4$s</span>
-								  </button>',
+		'class_submit'         => 'btnGradientSpin',
+		'submit_button'        => $submit_button_html,
 		'submit_field'         => '<div class="form-submit">%1$s %2$s</div>',
 		'label_submit'         => __( 'Gửi bình luận', 'my-theme' ),
 	);

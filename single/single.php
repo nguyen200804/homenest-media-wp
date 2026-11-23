@@ -16,7 +16,7 @@ while ( have_posts() ) : the_post();
 ?>
 
 <!-- 1. SECTION: NỘI DUNG BÀI VIẾT & SIDEBAR -->
-<section class="single-article-section">
+<section class="single-article-section section">
     <div class="container">
         <div class="wrapper single-wrapper">
 
@@ -112,7 +112,7 @@ while ( have_posts() ) : the_post();
 </section>
 
 <!-- 2. SECTION: BÌNH LUẬN (COMMENT) -->
-<section class="single-comments-section">
+<section class="single-comments-section section">
     <div class="container">
         <div class="wrapper single-comments-wrapper">
             <?php
@@ -140,7 +140,7 @@ if ( ! empty( $current_cats ) ) :
     if ( $related_query->have_posts() ) :
         $total_related = $related_query->post_count;
 ?>
-<section class="single-related-section">
+<section class="single-related-section section">
     <div class="container">
         <div class="wrapper single-related-wrapper">
             <h2 class="related-title"><span class="textGradient ">Bài viết liên quan</span></h2>
@@ -170,12 +170,13 @@ if ( ! empty( $current_cats ) ) :
             <!-- Nút Xem thêm (nếu có trên 10 bài viết liên quan) -->
             <?php if ( $total_related > 10 ) : ?>
                 <div class="related-load-more-wrap">
-                    <button type="button" class="btn-load-more-related" id="btn-load-more-related">
-                        <span>Xem thêm</span>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </button>
+                    <?php
+                    get_template_part( 'template-parts/ui/button', null, array(
+                        'text' => __( 'Xem thêm', 'my-theme' ),
+                        'id'   => 'btn-load-more-related',
+                        'tag'  => 'button',
+                    ) );
+                    ?>
                 </div>
             <?php endif; ?>
 

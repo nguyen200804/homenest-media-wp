@@ -1,0 +1,307 @@
+/* ==========================================================================
+   ARCHIVE: DỰ ÁN (post_type = du-an)
+   ========================================================================== */
+
+/* ---------- 1. Hero ---------- */
+.duan-hero {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.duan-hero-wrapper {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.duan-hero-title {
+    font-size: 48px;
+    line-height: 1.2;
+    color: #000;
+    margin: 0 0 24px;
+}
+
+.duan-hero-desc {
+    margin: 0 0 28px;
+    max-width: 640px;
+}
+
+.duan-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 36px;
+    margin-bottom: 28px;
+}
+
+.duan-stat p {
+    margin: 0;
+}
+
+.duan-stat-number {
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: transparent;
+    -webkit-text-stroke: 1.5px #1b2366;
+}
+
+.duan-stat-label {
+    color: #171717;
+}
+
+.duan-hero-btn {
+    display: inline-block;
+    padding: .7em 1.6em;
+    border-radius: 100px;
+    border: 1px solid #e24c4a;
+    color: #171717;
+    text-decoration: none;
+    transition: background .25s ease, color .25s ease;
+}
+
+.duan-hero-btn:hover {
+    background: var(--bg-gradient);
+    border-color: transparent;
+    color: #fff;
+}
+
+.duan-hero-visual {
+    display: flex;
+    justify-content: center;
+}
+
+#duan-lottie {
+    width: 100%;
+    max-width: 460px;
+    aspect-ratio: 1;
+}
+
+/* ---------- 2. Bộ lọc ---------- */
+.duan-list-section {
+    background: #f1f2f5;
+    padding-top: 60px;
+    padding-bottom: 90px;
+}
+
+.duan-filter {
+    display: flex;
+    align-items: stretch;
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, .04);
+    margin-bottom: 28px;
+}
+
+.duan-filter-select {
+    flex: 0 0 300px;
+    border-right: 1px solid #e5e7eb;
+    display: flex;
+}
+
+.duan-filter select,
+.duan-filter-search {
+    border: 0;
+    outline: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 15px;
+    color: #171717;
+    padding: 0 22px;
+    height: 54px;
+}
+
+.duan-filter select {
+    width: 100%;
+    cursor: pointer;
+}
+
+.duan-filter-search {
+    flex: 1;
+    min-width: 0;
+}
+
+.duan-filter-submit {
+    flex: 0 0 168px;
+    border: 0;
+    margin: 0;
+    border-radius: 12px;
+    background: var(--bg-gradient);
+    color: #fff;
+    font-family: inherit;
+    font-size: 15px;
+    cursor: pointer;
+    transition: opacity .2s ease;
+}
+
+.duan-filter-submit:hover {
+    opacity: .9;
+}
+
+/* ---------- 3. Tabs lĩnh vực ---------- */
+.duan-tabs {
+    list-style: none;
+    margin: 0 0 32px;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 8px;
+}
+
+.duan-tab {
+    display: inline-block;
+    padding: .55em 1.1em;
+    border-radius: 12px;
+    color: #171717;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background .2s ease, color .2s ease;
+}
+
+.duan-tab:hover {
+    color: #386bb7;
+}
+
+.duan-tab.is-active {
+    background: var(--bg-gradient);
+    color: #fff;
+}
+
+/* ---------- 4. Lưới dự án ---------- */
+.duan-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px 24px;
+}
+
+.duan-card-thumb {
+    display: block;
+    aspect-ratio: 1.6;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #e5e7eb;
+    margin-bottom: 14px;
+}
+
+.duan-card-thumb img,
+.duan-card-placeholder {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .4s ease;
+}
+
+.duan-card:hover .duan-card-thumb img {
+    transform: scale(1.05);
+}
+
+.duan-card-title {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0 0 4px;
+}
+
+.duan-card-title a {
+    color: #171717;
+    text-decoration: none;
+}
+
+.duan-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: #6b7280;
+    text-decoration: none;
+    transition: color .2s ease, gap .2s ease;
+}
+
+.duan-card:hover .duan-card-link,
+.duan-card-link:hover {
+    color: #386bb7;
+    gap: 10px;
+}
+
+.duan-list-section .pagination-wrap {
+    margin-top: 48px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1200px) {
+    .duan-hero-title {
+        font-size: 40px;
+    }
+
+    .duan-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 996px) {
+    .duan-hero-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .duan-hero-visual {
+        order: -1;
+    }
+
+    #duan-lottie {
+        max-width: 300px;
+    }
+
+    .duan-hero-title {
+        font-size: 34px;
+    }
+
+    .duan-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .duan-hero {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    .duan-hero-title {
+        font-size: 28px;
+    }
+
+    .duan-stat-number {
+        font-size: 34px;
+    }
+
+    .duan-filter {
+        flex-direction: column;
+        padding: 8px;
+        gap: 8px;
+    }
+
+    .duan-filter-select {
+        flex: none;
+        border-right: 0;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .duan-filter-submit {
+        flex: none;
+        height: 48px;
+    }
+
+    .duan-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+    }
+
+    .duan-tab {
+        white-space: nowrap;
+    }
+
+    .duan-grid {
+        gap: 24px 14px;
+    }
+}

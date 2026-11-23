@@ -7,7 +7,10 @@ document.addEventListener('DOMContentLoaded', function() {
   var loadMoreBtn = document.getElementById('btn-load-more-related');
   if (!loadMoreBtn) return;
 
-  loadMoreBtn.addEventListener('click', function() {
+  loadMoreBtn.addEventListener('click', function(e) {
+    if (e && e.preventDefault) {
+      e.preventDefault();
+    }
     var hiddenItems = document.querySelectorAll('.related-post-col.related-item-hidden');
     var batchSize = 10;
     var count = 0;

@@ -13,7 +13,7 @@ get_header();
 $theme_uri = get_template_directory_uri();
 ?>
 
-<section class="archive-section">
+<section class="archive-section section">
     <div class="container">
         <div class="archive-wrapper">
 
@@ -72,10 +72,11 @@ $theme_uri = get_template_directory_uri();
                         <div class="pagination-wrap">
                             <?php
                             the_posts_pagination( array(
-                                'mid_size'           => 2,
-                                'prev_text'          => '<span class="nav-prev">&larr; Trước</span>',
-                                'next_text'          => '<span class="nav-next">Sau &rarr;</span>',
-                                'screen_reader_text' => 'Điều hướng bài viết',
+                                'mid_size'           => 1, // Đổi từ 2 thành 1 để rút ngắn 2 bên
+    'end_size'           => 0,
+                                'prev_text'          => '<span class="nav-prev" aria-label="' . esc_attr__( 'Trang trước', 'my-theme' ) . '"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></span>',
+                                'next_text'          => '<span class="nav-next" aria-label="' . esc_attr__( 'Trang sau', 'my-theme' ) . '"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></span>',
+                                'screen_reader_text' => __( 'Điều hướng bài viết', 'my-theme' ),
                             ) );
                             ?>
                         </div>

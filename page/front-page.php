@@ -1,5 +1,7 @@
 <?php
 /**
+ * Template Name: Trang chủ (Front Page)
+ * 
  * The template for displaying the front page
  * HomeNest.media Front Page
  */

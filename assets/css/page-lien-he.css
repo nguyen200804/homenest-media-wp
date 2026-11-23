@@ -1,0 +1,383 @@
+/* ==========================================================================
+   PAGE: LIÊN HỆ (Contact Page Styles)
+   HomeNest Media
+   ========================================================================== */
+
+.contact-section {
+    padding-top: 80px;
+    padding-bottom: 110px;
+    display: flex;
+    align-items: center;
+}
+
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 120px;
+    align-items: center;
+}
+
+/* ==========================================================================
+   1. Cột trái: Thông tin liên hệ
+   ========================================================================== */
+.contact-info-col {
+    min-width: 0;
+}
+
+.contact-kicker {
+    /* font-size: 16px; */
+    color: #000000;
+    margin: 0 0 3px;
+}
+
+.contact-title {
+    font-size: 48px;
+    color: #171717;
+    margin: 0 0 26px;
+}
+
+.contact-desc {
+    margin: 0 0 50px;
+}
+
+.contact-desc .contact-highlight {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: #386bb7;
+    font-weight: 500;
+    color: #171717;
+}
+
+/* Lưới chi tiết liên hệ (2 cột: Hotline, Địa chỉ, Email, Social) */
+.contact-details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 50px;
+}
+
+.contact-detail-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-detail-title {
+    font-size: 24px;
+    margin: 0 0 4px;
+}
+
+.contact-detail-value {
+    /* font-size: 16px; */
+    color: #171717;
+    margin-bottom: 0;
+}
+
+.contact-detail-value a {
+    color: #171717;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.contact-detail-value a:hover {
+    color: #386bb7;
+}
+
+/* Mạng xã hội */
+.contact-social-links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.contact-social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    border-radius: 8px;
+}
+
+.contact-social-link:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.contact-social-link svg {
+    display: block;
+    width: 28px;
+    height: 28px;
+}
+
+/* ==========================================================================
+   2. Cột phải: Card Form liên hệ
+   ========================================================================== */
+.contact-form-col {
+    min-width: 0;
+}
+
+.contact-card {
+    border-radius: 24px;
+    padding: 64px 72px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+    /* Viền gradient bo tròn góc theo thiết kế */
+    border: 1.5px solid transparent;
+    background: linear-gradient(#f4f6fa, #f4f6fa) padding-box,
+        linear-gradient(135deg, #386bb7 0%, #e24c4a 100%) border-box;
+}
+
+.contact-form-title {
+    font-size: 28px;
+    color: #171717;
+    margin: 0 0 32px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.contact-form-row {
+    width: 100%;
+}
+
+.contact-form-row-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+/* UI Floating Label Input theo comments.php */
+.contact-form-group {
+    position: relative;
+    display: flex;
+    width: 100%;
+    margin: 0;
+    font-size: 15px;
+}
+
+.contact-line-input {
+    width: 100%;
+    background: transparent;
+    border: 1px solid #8e95a5;
+    border-radius: 12px;
+    padding: 1em 1em;
+    font-size: 1em;
+    font-family: inherit;
+    color: #171717;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.25s ease;
+}
+
+.contact-line-input::placeholder,
+.contact-line-textarea::placeholder {
+    color: transparent;
+    font-size: 0.95rem;
+}
+
+.contact-form-group .placeholder {
+    position: absolute;
+    top: 1em;
+    left: 0.6em;
+    padding: 0 0.5em;
+    background: #f4f6fa;
+    color: #9ca3af;
+    pointer-events: none;
+    transform: translateY(0) scale(1);
+    transform-origin: left center;
+    transition: all 0.25s ease;
+    font-size: 1em;
+    line-height: 1.3em;
+}
+
+.contact-line-textarea {
+    width: 100%;
+    background: transparent;
+    border: 1px solid #8e95a5;
+    border-radius: 12px;
+    padding: 0.8em 1em;
+    font-size: 1em;
+    font-family: inherit;
+    color: #171717;
+    outline: none;
+    box-sizing: border-box;
+    resize: vertical;
+    min-height: 110px;
+    transition: border-color 0.25s ease;
+}
+
+.contact-line-input:focus,
+.contact-line-textarea:focus {
+    border-color: #1b2366;
+}
+
+/* Thu nhỏ và đẩy .placeholder lên viền trên khi focus HOẶC khi đã có giá trị */
+.contact-form-group .contact-line-input:focus+.placeholder,
+.contact-form-group .contact-line-input:not(:placeholder-shown)+.placeholder,
+.contact-form-group .contact-line-textarea:focus+.placeholder,
+.contact-form-group .contact-line-textarea:not(:placeholder-shown)+.placeholder {
+    top: 0;
+    transform: translateY(-50%) scale(0.8);
+    color: #6b7280;
+}
+
+.contact-form-group .contact-line-input:focus+.placeholder,
+.contact-form-group .contact-line-textarea:focus+.placeholder {
+    color: #1b2366;
+}
+
+.contact-form-action {
+    margin-top: 10px;
+    display: flex;
+}
+
+.contact-form-action .btnGradientSpin {
+    font-size: 15px;
+}
+
+.map-section>iframe {
+    height: min(calc(100vw /16 * 9), 500px);
+}
+
+@media (max-width: 1600px) {
+    .contact-wrapper {
+        gap: 100px;
+    }
+}
+
+@media (max-width: 1400px) {
+    .contact-wrapper {
+        gap: 7.1vw;
+    }
+
+    .contact-title {
+        font-size: 3.5vw;
+    }
+
+    .contact-detail-title {
+        font-size: 22px;
+    }
+
+    .contact-card {
+        padding: 64px 5.15vw;
+    }
+}
+
+@media (max-width: 1200px) {
+    .contact-form-title {
+        font-size: 26px;
+        margin: 0 0 30px;
+    }
+}
+
+@media (max-width: 996px) {
+
+    .contact-section {
+        padding-top: 68px;
+        padding-bottom: 68px;
+    }
+
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .contact-title {
+        font-size: 36px;
+        margin: 0 0 24px;
+    }
+
+    .contact-desc {
+        margin: 0 0 40px;
+    }
+}
+
+@media (max-width: 576px) {
+    .contact-section {
+        padding-top: 54px;
+        padding-bottom: 54px;
+    }
+
+    .contact-title {
+        font-size: 30px;
+    }
+
+    .contact-desc {
+        margin: 0 0 36px;
+    }
+
+    .contact-details-grid {
+        gap: 18px 50px;
+    }
+
+    .contact-card {
+        border-radius: 18px;
+    }
+}
+
+@media (max-width: 425px) {
+    .contact-section {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    .contact-wrapper {
+        gap: 46px;
+    }
+
+    .contact-title {
+        font-size: 28px;
+    }
+
+    .contact-desc {
+        margin: 0 0 34px;
+    }
+
+    .contact-details-grid {
+        gap: 16px 24px;
+    }
+
+    .contact-detail-title {
+        font-size: 20px;
+        margin: 0 0 2px;
+    }
+
+    .contact-social-links {
+        gap: 8px;
+    }
+
+    .contact-card {
+        border-radius: 14px;
+        padding: 40px 5.15vw;
+    }
+
+    .contact-form-title {
+        font-size: 24px;
+        margin: 0 0 28px;
+    }
+
+    .contact-form {
+        gap: 12px;
+    }
+
+    .contact-form-row-2col {
+        gap: 12px;
+    }
+
+    .contact-form-group {
+        font-size: 14px;
+    }
+
+    .contact-line-input {
+        border-radius: 8px;
+    }
+
+    .contact-line-textarea {
+        border-radius: 8px;
+    }
+
+    .contact-form-action .btnGradientSpin {
+        font-size: 14px;
+    }
+}

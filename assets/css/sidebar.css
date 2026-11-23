@@ -1,10 +1,12 @@
 /* ==========================================================================
-   SIDEBAR STYLES (Cột phụ: Form tư vấn & Banner quảng cáo)
+   SIDEBAR STYLES (Cá»™t phá»¥: Form tÆ° váº¥n & Banner quáº£ng cÃ¡o)
    HomeNest Media
    ========================================================================== */
 
 .archive-sidebar-col {
   width: 100%;
+  position: sticky;
+  top: 150px;
 }
 
 .archive-sidebar-inner {
@@ -23,7 +25,7 @@
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
 }
 
-/* 1. Form Nhận Ưu Đãi Widget (Khớp theo thiết kế) */
+/* 1. Form Nháº­n Æ¯u ÄÃ£i Widget (Khá»›p theo thiáº¿t káº¿) */
 .archive-widget.widget-promo-form {
   background: linear-gradient(145deg, #cc4e46 0%, #764b6e 48%, #3c5d9a 100%);
   border: none;
@@ -47,7 +49,7 @@
 .promo-form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 .promo-form-group {
@@ -123,7 +125,7 @@
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }
 
-/* 2. Banner Quảng Cáo Widget */
+/* 2. Banner Quáº£ng CÃ¡o Widget */
 .archive-widget.archive-banner-widget {
   padding: 0;
   overflow: hidden;
@@ -154,23 +156,19 @@
   filter: brightness(1.03);
 }
 
-/* 3. Responsive */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .archive-sidebar-inner {
-    position: static;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+    gap: 28px;
+  }
+
+  .archive-widget.widget-promo-form {
+    border-radius: 18px;
+    padding: 32px 24px 35px;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 425px) {
   .archive-sidebar-inner {
-    grid-template-columns: 1fr;
     gap: 20px;
-  }
-
-  .archive-widget {
-    padding: 24px 20px;
   }
 }

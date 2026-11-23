@@ -32,5 +32,37 @@ function theme_register_custom_taxonomies() {
 
     // Gắn taxonomy này vào post type 'dich-vu'
     register_taxonomy( 'danh-muc-dich-vu', array( 'dich-vu' ), $args );
+
+    // Taxonomy: Chuyên ngành & Lĩnh vực cho post type 'du-an'
+    $du_an_taxonomies = array(
+        'chuyen-nganh' => array( 'Chuyên ngành', 'chuyên ngành' ),
+        'linh-vuc'     => array( 'Lĩnh vực', 'lĩnh vực' ),
+    );
+
+    foreach ( $du_an_taxonomies as $slug => $text ) {
+        $tax_labels = array(
+            'name'              => $text[0],
+            'singular_name'     => $text[0],
+            'search_items'      => 'Tìm kiếm ' . $text[1],
+            'all_items'         => 'Tất cả ' . $text[1],
+            'parent_item'       => $text[0] . ' cha',
+            'parent_item_colon' => $text[0] . ' cha:',
+            'edit_item'         => 'Chỉnh sửa ' . $text[1],
+            'update_item'       => 'Cập nhật ' . $text[1],
+            'add_new_item'      => 'Thêm ' . $text[1] . ' mới',
+            'new_item_name'     => 'Tên ' . $text[1] . ' mới',
+            'menu_name'         => $text[0],
+        );
+
+        register_taxonomy( $slug, array( 'du-an' ), array(
+            'hierarchical'      => true,
+            'labels'            => $tax_labels,
+            'show_ui'           => true,
+            'show_admin_column' => true,
+            'query_var'         => true,
+            'rewrite'           => array( 'slug' => $slug, 'with_front' => false ),
+            'show_in_rest'      => true,
+        ) );
+    }
 }
 add_action( 'init', 'theme_register_custom_taxonomies' );
